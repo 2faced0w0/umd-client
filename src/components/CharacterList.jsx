@@ -4,13 +4,17 @@ import { getAllData } from '../store/characterReducer';
 
 const CharacterList = () => {
   const dispatch = useDispatch();
-  const { data, error, totalPages } = useSelector((state) => state.characters);
+  const { 
+    data, 
+    error, 
+    totalPages 
+  } = useSelector((state) => state.characters);
   
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     dispatch(getAllData(page));
-  }, [dispatch, page]);
+  }, [page]);
 
   const handlePrevious = () => {
     if (page > 1) {
@@ -26,7 +30,9 @@ const CharacterList = () => {
 
   if (error) {
     console.log("Error fetching characters", error);
-    return <div className="">Error</div>;
+    return <div className="alert alert-danger" role="alert">
+      Error fetching characters
+    </div>;
   }
 
   return (
