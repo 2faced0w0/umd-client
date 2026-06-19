@@ -64,10 +64,8 @@ const UserList = () => {
                     <Button 
                       label="Delete" 
                       icon="pi pi-trash" 
-                      severity="danger" 
-                      size="small"
                       onClick={() => handleDelete(user.id)}
-                      className="p-button-sm"
+                      className="btn btn-danger btn-sm"
                     />
                   </td>
                 </tr>
