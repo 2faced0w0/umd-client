@@ -68,26 +68,46 @@ const CharacterList = () => {
             </table>
           </div>
 
-        <div className="d-flex justify-content-between align-items-center mt-4">
-          <button 
-            className="btn btn-outline-primary" 
-            onClick={handlePrevious} 
-            disabled={page === 1}
-          >
-            Previous
-          </button>
-          
-          <span>
-            Page {page} of {totalPages}
-          </span>
-          
-          <button 
-            className="btn btn-outline-primary" 
-            onClick={handleNext} 
-            disabled={page === totalPages}
-          >
-            Next
-          </button>
+        <nav className="mt-4">
+          <ul className="pagination justify-content-center mb-0">
+            <li className={`page-item ${page === 1 ? 'disabled' : ''}`}>
+              <button className="page-link" onClick={handlePrevious}>
+                Previous
+              </button>
+            </li>
+            
+            {page > 1 && (
+              <li className="page-item">
+                <button className="page-link" onClick={() => setPage(page - 1)}>
+                  {page - 1}
+                </button>
+              </li>
+            )}
+            
+            <li className="page-item active" aria-current="page">
+              <button className="page-link">
+                {page}
+              </button>
+            </li>
+            
+            {page < totalPages && (
+              <li className="page-item">
+                <button className="page-link" onClick={() => setPage(page + 1)}>
+                  {page + 1}
+                </button>
+              </li>
+            )}
+            
+            <li className={`page-item ${page === totalPages ? 'disabled' : ''}`}>
+              <button className="page-link" onClick={handleNext}>
+                Next
+              </button>
+            </li>
+          </ul>
+        </nav>
+        
+        <div className="text-center mt-2 text-muted small">
+          Page {page} of {totalPages}
         </div>
       </div>
     </div>
