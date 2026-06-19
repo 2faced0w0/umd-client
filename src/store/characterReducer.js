@@ -8,7 +8,7 @@ export const getAllData = (page) => {
             const response = await axios.get(url);
             
             let action = {
-                type: 'GET_ALL_CHARACTERS',
+                type: 'getAllCharacters',
                 payload: response.data
             };
             dispatch(action);
@@ -21,14 +21,13 @@ export const getAllData = (page) => {
 // Initial State
 const initialState = {
     data: [],
-    loading: false,
     error: null,
     totalPages: 1
 };
 
 // Reducer
 export const characterReducer = (state = initialState, action) => {
-    if (action.type === 'GET_ALL_CHARACTERS') {
+    if (action.type === 'getAllCharacters') {
         return {
             ...state,
             data: action.payload.results,

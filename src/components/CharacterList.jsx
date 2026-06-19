@@ -4,7 +4,7 @@ import { getAllData } from '../store/characterReducer';
 
 const CharacterList = () => {
   const dispatch = useDispatch();
-  const { data, loading, error, totalPages } = useSelector((state) => state.characters);
+  const { data, error, totalPages } = useSelector((state) => state.characters);
   
   const [page, setPage] = useState(1);
 
