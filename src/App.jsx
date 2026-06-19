@@ -1,6 +1,7 @@
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
 import UserList from './components/UserList';
 import AddUser from './components/AddUser';
+import CharacterList from './components/CharacterList';
 import './App.css'; // Let's keep App.css if there's any custom styles, else it can be empty
 
 function App() {
@@ -21,6 +22,12 @@ function App() {
           >
             Add User
           </NavLink>
+          <NavLink
+            to="/characters"
+            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+          >
+            Characters
+          </NavLink>
         </nav>
       </header>
 
@@ -29,6 +36,7 @@ function App() {
           <Route path="/" element={<Navigate to="/users" replace />} />
           <Route path="/users" element={<UserList />} />
           <Route path="/add-user" element={<AddUser />} />
+          <Route path="/characters" element={<CharacterList />} />
         </Routes>
       </main>
     </div>
